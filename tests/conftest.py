@@ -19,7 +19,7 @@ def driver_init(request):
     options.add_experimental_option("detach", True)
     driver = webdriver.Chrome(options=options)
     request.cls.driver = driver
-    driver.get("http://www.mytinytodo.net/demo/")
+    driver.get("https://www.saucedemo.com/")
     driver.maximize_window()
     yield
     driver.quit()
