@@ -30,17 +30,6 @@ def pytest_configure(config: Config) -> None:
     config.option.allure_report_dir = "allure-results"
 
 
-# for global env. run:
-def pytest_sessionFinish() -> None:
-    environment_properties = {
-     'browser': driver.name,
-     'driver_version': driver.capabilities['browserVersion']
-    }
-    allure_env_path = os.path.join("allure-results", 'environment.properties')
-    with open(allure_env_path, 'w') as f:
-        data = '\n'.join([f'{variable}={value}' for variable, value in environment_properties.items()])
-        f.write(data)
-
 
 # screenshot for failing test:
 def pytest_exception_interact(report):
