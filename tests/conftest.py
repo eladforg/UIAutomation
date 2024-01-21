@@ -22,7 +22,7 @@ def driver_init(request):
     driver.get("https://www.saucedemo.com/")
     driver.maximize_window()
     yield
-    driver.quit()
+    #driver.quit()
 
 
 # to create allure results report after every run:

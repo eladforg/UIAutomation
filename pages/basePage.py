@@ -9,6 +9,10 @@ class BasePage:
         self.driver: WebDriver = driver
 
 
+    def find_element(self, locator):
+        self.driver.find_element(*locator)
+
+
     def fill_text(self, locator, text: str) -> None:
         self.driver.find_element(*locator).clear()
         self.driver.find_element(*locator).send_keys(text)
