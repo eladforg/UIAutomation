@@ -2,6 +2,7 @@ import os
 
 import pytest
 from _pytest.config import Config
+from _pytest.fixtures import fixture
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import json
@@ -9,6 +10,8 @@ import json
 import allure
 from allure_commons.types import AttachmentType
 from requests import Response
+
+from pages.loginPage import LoginPage
 
 
 # for setting a global driver to be created before any run of class:
@@ -36,3 +39,10 @@ def pytest_exception_interact(report):
     if report.failed:
         allure.attach(body=driver.get_screenshot_as_png(), name="screenshot",
                       attachment_type=allure.attachment_type.PNG)
+
+
+
+# @fixture
+# def login():
+#     p_login = LoginPage(driver)
+#     p_login.login("standard_user", "secret_sauce")
