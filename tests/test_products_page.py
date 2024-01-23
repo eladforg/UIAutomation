@@ -24,6 +24,7 @@ class TestsOfProductsPage(TestBase):
     @allure.description("add and remove items to cart and check cart badge number")
     def test_add_and_remove__item_to_cart(self, login):
         p_products = ProductsPage(self.driver)
+        p_products.reset_cart()
         p_products.add_remove_item_to_cart(2)
         time.sleep(1)
         badge = p_products.check_cart_badge()
@@ -36,3 +37,13 @@ class TestsOfProductsPage(TestBase):
         time.sleep(1)
         badge = p_products.check_cart_badge()
         assert badge == "1"
+        p_products.reset_cart()
+
+
+    @allure.description("checking filter button")
+    def test_filter_btn(self, login):
+        p_products = ProductsPage(self.driver)
+        is_filtered = p_products.filter(2)
+        assert is_filtered==True, "not filtering products amounts from small to big"
+        is_filtered = p_products.filter(3)
+        assert is_filtered == True, "not filtering products amounts from big to small"
