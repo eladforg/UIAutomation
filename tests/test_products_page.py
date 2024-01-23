@@ -43,6 +43,10 @@ class TestsOfProductsPage(TestBase):
     @allure.description("checking filter button")
     def test_filter_btn(self, login):
         p_products = ProductsPage(self.driver)
+        is_filtered = p_products.filter(0)
+        assert is_filtered == True, "not filtering products titles from small to big"
+        is_filtered = p_products.filter(1)
+        assert is_filtered == True, "not filtering products titles from big to small"
         is_filtered = p_products.filter(2)
         assert is_filtered==True, "not filtering products amounts from small to big"
         is_filtered = p_products.filter(3)
