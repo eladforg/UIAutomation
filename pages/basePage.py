@@ -10,7 +10,7 @@ class BasePage:
 
 
     def find_element(self, locator):
-        self.driver.find_element(*locator)
+        return self.driver.find_element(*locator)
 
 
     def fill_text(self, locator, text: str) -> None:

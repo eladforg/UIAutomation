@@ -8,7 +8,8 @@ from pages.basePage import BasePage
 class ProductsPage(BasePage):
 
     LIST_PRODUCT_ITEMS = (By.CSS_SELECTOR, ".inventory_item")
-    FIRST_ITEM = (By.ID, "item_4_title_link")
+    FIRST_ITEM = (By.CSS_SELECTOR, ".inventory_item_description")
+    FIRST_ITEM_TITLE = (By.CSS_SELECTOR, ".inventory_item_name")
     LIST_ADD_TO_CART_BTNS = (By.CSS_SELECTOR, "button.btn")
     LIST_PRICES = (By.CSS_SELECTOR, ".inventory_item_price")
     LIST_TITLES = (By.CSS_SELECTOR, ".inventory_item_name")
@@ -60,8 +61,13 @@ class ProductsPage(BasePage):
         self.clicking(self.X_BTN)
 
 
+    def get_product(self):
+        return self.find_element(self.FIRST_ITEM)
+
+
+
     def enter_product_page(self):
-        self.clicking(self.FIRST_ITEM)
+        self.clicking(self.FIRST_ITEM_TITLE)
 
 #-----------------------------------------------------------------------------------
     def list_prices(self):

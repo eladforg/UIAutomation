@@ -14,6 +14,7 @@ class TestsOfProductsPage(TestBase):
     def test_products_data(self, login):
         # p_login = LoginPage(self.driver)
         # p_login.login("standard_user", "secret_sauce")
+
         p_products = ProductsPage(self.driver)
         products = p_products.products_list()
         for item in products:
