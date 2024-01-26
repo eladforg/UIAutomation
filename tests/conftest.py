@@ -41,7 +41,7 @@ def pytest_exception_interact(report):
                       attachment_type=allure.attachment_type.PNG)
 
 
-
+#
 # @fixture
 # def login():
 #     p_login = LoginPage(driver)

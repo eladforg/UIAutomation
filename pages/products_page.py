@@ -61,15 +61,26 @@ class ProductsPage(BasePage):
         self.clicking(self.X_BTN)
 
 
-    def get_product(self):
-        return self.find_element(self.FIRST_ITEM)
+    def back_to_products_page(self):
+        self.clicking(self.BURGER_BTN)
+        time.sleep(1)
+        self.clicking(self.MENU_ALL_ITEMS_BTN)
 
 
+    def go_to_cart(self):
+        self.clicking(self.CART_BTN)
 
-    def enter_product_page(self):
-        self.clicking(self.FIRST_ITEM_TITLE)
+    def get_specific_product(self, prod_num):
+        products = self.return_elements(self.LIST_PRODUCT_ITEMS)
+        return products[prod_num]
+
+
+    def enter_product_page(self, prod_num):
+        products = self.return_elements(self.LIST_TITLES)
+        products[prod_num].click()
 
 #-----------------------------------------------------------------------------------
+    #filter button functions:
     def list_prices(self):
         prices_elements = self.return_elements(self.LIST_PRICES)
         list_prices = []

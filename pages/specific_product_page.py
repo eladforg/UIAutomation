@@ -4,6 +4,7 @@ from pages.basePage import BasePage
 from pages.products_page import ProductsPage
 
 
+# inherits from ProductsPage class so we can use its' cart actions (and anyway it includes BasePage class)
 class SpecificProductPage(ProductsPage):
 
     BACK_BTN = (By.ID, "back-to-products")
@@ -31,6 +32,9 @@ class SpecificProductPage(ProductsPage):
         return self.get_text(self.ITEM_DESC)
 
 
+    def click_add_remove_to_cart_btn(self):
+        self.clicking(self.ADD_TO_CART_BTN)
+
     # def get_item_title(self):
     #     return self.get_text(self.ITEM_TITLE)
     #
@@ -42,7 +46,5 @@ class SpecificProductPage(ProductsPage):
     # def get_item_price(self):
     #     return self.get_text(self.ITEM_PRICE)
 
-    def click_add_to_cart_btn(self):
-        self.clicking(self.ADD_TO_CART_BTN)
 
 
